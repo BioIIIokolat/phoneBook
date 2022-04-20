@@ -1,0 +1,104 @@
+<form [formGroup]="formContact" novalidate>
+    <div class="form-group">
+        <div class="row">
+            <div class="col">
+
+                <label>FirstName: </label>
+                <input type="text" matInput name="firstName" 
+                  [(ngModel)]="data.firstName" class="form-control"
+                   formControlName="firstName" />
+
+                <br>
+
+                <div class="alert alert-danger" *ngIf="formContact.controls['firstName'].invalid
+                 && formContact.controls['firstName'].touched">
+                    Incorrect FirstName!!!
+                </div>
+              
+                <br>
+                
+                <label>LastName: </label>
+                <input type="text" name="lastName" class="form-control"
+                  [(ngModel)]="data.lastName"
+                   formControlName="lastName" />
+        
+                <div class="alert alert-danger" *ngIf="formContact.controls['lastName'].invalid
+                 && formContact.controls['lastName'].touched">
+                    Incorrect LastName!!!
+                </div>
+        
+                <br>
+        
+                <label>Address: </label>
+                <input type="text"
+                  class="form-control" name="address"
+                  matInput [(ngModel)]="data.address" formControlName="address" />
+                <div class="alert alert-danger" *ngIf="formContact.controls['address'].invalid
+                && formContact.controls['lastName'].touched">
+                    Incorrect Address!!!
+                </div>
+            </div>
+            <div class="col">
+                <label>Email: </label>
+                <input type="text"
+                  class="form-control" name="email"
+                  matInput [(ngModel)]="data.eMail" formControlName="email" />
+        
+                <div class="alert alert-danger" *ngIf="formContact.controls['email'].invalid
+                && formContact.controls['email'].touched">
+                    Incorrect Email!!!
+                </div>
+        
+                <br/>
+                <br/>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Phones</mat-label>
+                    <mat-select [(ngModel)]="data.selected_phones"
+                     formControlName="phones"
+                     (selectionChange)="changePhones($event)" multiple>
+                    <mat-option *ngFor="let phone of data.phones"
+                     [value]="phone">
+                     {{phone.phoneNumber}}
+                    </mat-option>
+                </mat-select>
+                </mat-form-field>
+        
+                <br/>
+
+                <div class="alert alert-danger" *ngIf="formContact.controls['phones'].invalid
+                && formContact.controls['phones'].touched">
+                   Incorrect Phones!!!
+                </div>
+
+                <br/>
+                <br/>
+
+                <mat-form-field appearance="fill">
+                <mat-label>Category</mat-label>
+                    <mat-select formControlName="category" 
+                     (selectionChange)="selectCategory($event)">
+                    <mat-option *ngFor="let cat of data.categories"
+                     [value]="cat">
+                       {{cat.title}}
+                    </mat-option>
+                </mat-select>
+                </mat-form-field>
+        
+                <div class="alert alert-danger" *ngIf="formContact.controls['category'].invalid
+                && formContact.controls['category'].touched">
+                   Incorrect Category!!!
+            </div>
+        </div>
+            <div class="w-100"></div>
+            <div mat-dialog-actions class="col-4 d-flex justify-content-center"> <br/><br/> <button mat-raised-button color="warn" mat-dialog-close>Закрыть</button></div>
+            <div mat-dialog-actions class="col-4 d-flex justify-content-center"> <br/><br/> <button mat-raised-button color="primary" [mat-dialog-close]="data"
+                cdkFocusInitial
+                [disabled]="formContact.invalid">Применить</button></div>
+        </div>
+    </div>
+    <div mat-dialog-actions>
+       
+      
+    </div>
+</form>

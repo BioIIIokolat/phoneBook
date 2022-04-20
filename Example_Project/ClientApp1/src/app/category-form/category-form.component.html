@@ -1,0 +1,21 @@
+<form [formGroup]="formCat" novalidate>
+      <div class="form-group">
+          <label>Title: </label>
+          <input type="text"
+            class="form-control" name="title"
+            matInput [(ngModel)]="data.title" formControlName="title" />
+            
+          <div class="alert alert-danger" *ngIf="formCat.controls['title'].invalid
+           && formCat.controls['title'].touched">
+              Incorrect Title
+          </div>
+      </div>
+      <br/>
+      <br/>
+      <div mat-dialog-actions>
+          <button style="margin-right: 80px;" mat-button mat-dialog-close>Закрыть</button>
+          <button class="btn btn-default" [mat-dialog-close]="data"
+                  cdkFocusInitial
+                  [disabled]="formCat.invalid">Применить</button>
+      </div>
+</form>

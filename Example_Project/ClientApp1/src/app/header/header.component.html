@@ -1,0 +1,59 @@
+<body>
+<div class="navigation">
+    <ul routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+      <li routerLinkActive="active" class="list active">
+        <a [routerLink]="['/home']">
+          <span class="icon"><mat-icon>home</mat-icon></span>
+          <span class="text">Home</span>
+        </a>
+      </li>
+      <li routerLinkActive="active" class="list">
+        <a [routerLink]="['contacts']">
+          <span class="icon"><mat-icon>contacts</mat-icon></span>
+          <span class="text">Contacts</span>
+        </a>
+      </li>
+      <li routerLinkActive="active" class="list">
+        <a [routerLink]="['category']">
+          <span class="icon"><mat-icon>category</mat-icon></span>
+          <span class="text">Category</span>
+        </a>
+      </li>
+      <li routerLinkActive="active" class="list">
+        <a [routerLink]="['phones']">
+          <span class="icon"><mat-icon>phone</mat-icon></span>
+          <span class="text">Phones</span>
+        </a>
+      </li>
+      <div class="indicator">
+      </div>
+    </ul>
+</div>
+</body>
+<!-- <ul routerLinkActive="active"  [routerLinkActiveOptions]="{exact:true}"
+     class="nav justify-content-center aqua-gradient py-4 mb-r font-weight-bold z-depth-1">
+  <li routerLinkActive="active" class="nav-item">
+      <a class="nav-link" [routerLink]="['']">
+        <mat-icon>home</mat-icon>
+        Home<link rel="icon" type="image/x-icon" href="favicon.png" />
+      </a>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" [routerLink]="['contacts']">
+        <mat-icon>contacts</mat-icon>
+        Contacts
+      </a>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" [routerLink]="['category']">
+        <mat-icon>category</mat-icon>
+        Category
+      </a>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" [routerLink]="['phones']">
+        <mat-icon>phone</mat-icon>
+        Phones
+      </a>
+  </li>
+</ul> -->

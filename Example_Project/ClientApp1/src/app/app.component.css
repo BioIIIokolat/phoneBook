@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  html,
+  body {
+    height: 100%;
+    background-color: red;
+  }
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    border: 6px solid whitesmoke;
+    height: 100%;
+  }
+  .content {
+    flex: 1 0 auto;
+  }
+  .footer {
+    flex: 0 0 auto;
+  }

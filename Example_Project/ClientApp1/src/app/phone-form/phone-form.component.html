@@ -1,0 +1,53 @@
+<form [formGroup]="formPhone" novalidate>
+    <div class="form-group">
+        <label>PhoneNumber: </label>
+        <input type="text" name="phoneNumber" 
+          [(ngModel)]="data.phoneNumber"
+          ng2TelInput
+          [ng2TelInputOptions]="{autoHideDialCode: false,separateDialCode:true,initialCountry: 'ua'}"
+          (hasError)="hasError($event)"
+          (ng2TelOutput)="getNumber($event)"
+          (countryChange)="onCountryChange($event)"
+           formControlName="phoneNumber" />
+<br>
+<br>
+        <div class="alert alert-danger" *ngIf="formPhone.controls['phoneNumber'].invalid
+         && formPhone.controls['phoneNumber'].touched || !error">
+            Incorrect PhoneNumber!!!
+        </div>
+
+        <br>
+
+        <label>Country: </label>
+        <input type="text" readonly
+          class="form-control" name="country"
+          matInput [(ngModel)]="data.country" formControlName="country" />
+
+          <br>
+<br>
+
+        <div class="alert alert-danger" *ngIf="formPhone.controls['country'].invalid">
+            Incorrect Country!!!
+        </div>
+       
+        <br>
+
+        <label>Provider: </label>
+        <input type="text"
+          class="form-control" name="provider"
+          matInput [(ngModel)]="data.provider" formControlName="provider" />
+          
+          <br>
+<br>
+        <div class="alert alert-danger" *ngIf="formPhone.controls['provider'].invalid
+         && formPhone.controls['provider'].touched">
+            Incorrect Provider!!!
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button style="margin-right: 220px;" mat-button mat-dialog-close>Закрыть</button>
+        <button class="btn btn-default" [mat-dialog-close]="data"
+                cdkFocusInitial
+                [disabled]="formPhone.invalid">Применить</button>
+    </div>
+</form>

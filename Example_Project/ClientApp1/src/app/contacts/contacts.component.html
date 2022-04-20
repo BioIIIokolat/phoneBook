@@ -1,0 +1,94 @@
+<br>
+<br>
+
+<div class="demo-button-container">
+    <button mat-raised-button (click)="onShowForm()" class="b_custom">
+      Добавить
+    </button>
+    <button mat-raised-button (click)="ngOnInit()" class="b_custom">
+      Показать
+    </button>
+</div>
+
+<div class="partner">
+  <br>
+  
+  <mat-label style="color: whitesmoke;">Фильтр</mat-label>
+
+  <input class="example-full-width" 
+  (keyup)="applyFilter($event)"
+   matInput>
+ 
+  <mat-label style="color: whitesmoke;">Поиск по имени</mat-label>
+  
+  <input class="example-full-width" [ngModel]='_nameText'
+   (ngModelChange)='_nameChanged.next($event)'
+    matInput>
+   
+    <mat-label style="color: whitesmoke;">Поиск по номеру</mat-label>
+  
+    <input class="example-full-width" [ngModel]='_phoneText'
+     (ngModelChange)='_phoneChanged.next($event)'
+      matInput>
+  <br>
+  <br>
+
+  <table matSort
+  (matSortChange)="announceSortChange($event)"
+   mat-table [dataSource]="_dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by FirstName"> FirstName </th>
+    <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by LastName"> LastName </th>
+    <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="eMail">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Email"> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.eMail}} </td>
+  </ng-container>
+ 
+  <ng-container matColumnDef="address">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Address"> Address </th>
+    <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="category">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Category"> Category </th>
+    <td mat-cell *matCellDef="let element"> {{element.category.title}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="phones">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Phones"> Phones </th>
+    <td mat-cell *matCellDef="let element">
+        <mat-list>
+            <mat-list-item *ngFor="let phone of element.phones"> {{phone.phoneNumber}} </mat-list-item>
+        </mat-list>
+    </td>
+  </ng-container>
+ 
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef> Delete </th>
+    <td mat-cell *matCellDef="let element">
+        <mat-icon class="remove" (click)="remove(element.id)">delete</mat-icon>
+    </td>
+  </ng-container>
+ 
+  <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef> Edit </th>
+    <td mat-cell *matCellDef="let element">
+        <mat-icon class="edit" (click)="onShowFormEdit(element)">edit</mat-icon>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>
+
+<br>
+<br>
